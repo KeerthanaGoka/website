@@ -56,7 +56,7 @@ module "eks" {
   eks_managed_node_groups = {
     karpenter = {
       ami_type       = "BOTTLEROCKET_x86_64"
-      instance_types = ["t2.medium"]
+      instance_types = ["t3.large"]
 
       min_size     = 1
       max_size     = 2
