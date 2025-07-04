@@ -16,6 +16,45 @@ All infrastructure components are automated using **Terraform**, enabling reprod
 
 This setup provides a complete Kubernetes platform for running microservices with end-to-end observability, security, and CI/CD capabilities.
 
+## Repository structure
+.
+|-- .gitignore
+|-- .pre-commit-config.yaml
+|-- README.md
+|-- app
+|   |-- __pycache__
+|   |   `-- main.cpython-311.pyc
+|   |-- main.py
+|   `-- requirements.txt
+|-- aquasecurity.github.io_clustercompliancereports.yaml.txt
+|-- manifests
+|   |-- argo-cd
+|   |   |-- kube-prometheus-application.yaml
+|   |   `-- shopping-application.yaml
+|   |-- istio
+|   |   `-- frontend-gateway.yaml
+|   |-- jaeger
+|   |   `-- simplest.yaml
+|   |-- shopping
+|   |   `-- shopping-all.yaml
+|   `-- website
+|       |-- website-deployment.yaml
+|       `-- website-service.yaml
+|-- repo-structure.txt
+|-- terraform
+|   |-- .gitignore
+|   |-- .terraform.lock.hcl
+|   |-- main.tf
+|   |-- provider.tf
+|   |-- terraform.tfstate
+|   |-- terraform.tfstate.backup
+|   |-- variables.tf
+|   `-- versions.tf
+|-- terraform.tfstate
+`-- test-secrets.env
+
+9 directories, 25 files
+
 ## EKS Platform Deployment Guide
 
 ### Prerequisites
