@@ -68,6 +68,42 @@ module "eks" {
       }
     }
   }
+  node_security_group_additional_rules = {
+    ingress_15017 = {
+      description                   = "Allow Istio Webhook traffic on port 15017"
+      protocol                      = "TCP"
+      from_port                     = 15017
+      to_port                       = 15017
+      type                          = "ingress"
+      source_cluster_security_group = true
+    }
+    ingress_15012 = {
+      description                   = "Allow Istio gRPC traffic on port 15012"
+      protocol                      = "TCP"
+      from_port                     = 15012
+      to_port                       = 15012
+      type                          = "ingress"
+      source_cluster_security_group = true
+    }
+
+    ingress_16686 = {
+      description = "Allow external access to Jaeger UI on port 16686"
+      protocol    = "TCP"
+      from_port   = 16686
+      to_port     = 16686
+      type        = "ingress"
+      cidr_blocks = ["0.0.0.0/0"]
+    }
+
+    ingress_3100 = {
+      description = "Allow external access to Loki HTTP API on port 3100"
+      protocol    = "TCP"
+      from_port   = 3100
+      to_port     = 3100
+      type        = "ingress"
+      cidr_blocks = ["0.0.0.0/0"]
+    }
+  }
 
   node_security_group_tags = merge(local.tags, {
     # NOTE - if creating multiple security groups with this module, only tag the
@@ -78,6 +114,8 @@ module "eks" {
 
   tags = local.tags
 }
+
+
 
 ################################################################################
 # Karpenter
